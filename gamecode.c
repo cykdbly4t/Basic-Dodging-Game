@@ -74,11 +74,19 @@ int main()
         if (control_type == 'A')
         {
             system("cls");
+            printf("Loading...\n");
+            printf("Press 'esc' to exit the game.");
+            Sleep(2000);
+            system("cls");
             auto_control();
         }
         else if (control_type == 'M')
         {
-            system("cls");        
+            system("cls");  
+            printf("Loading...\n");
+            printf("Press 'esc' to exit the game.");
+            Sleep(2000);
+            system("cls");          
             manual_control();
         }
         else 
@@ -192,6 +200,12 @@ int Move(Object *A)
             A->position.y++;
             update_object_pos(A, 12, A->Object); 
             return 0;            
+        }
+        else if (key==27)
+        {
+            system("cls");
+            printf("Game aborted.\n");
+            exit(0);
         }
     }
     
@@ -440,7 +454,7 @@ const char* manual_control() {
 
 void record(const char* gametype)
 {
-    char inputname[30], outputname[30], c;
+    char inputname[30], outputname[30], c, repeat;
     int final_score;
     FILE *RECORD;
     RECORD = fopen("game_record.txt","a+");
@@ -468,10 +482,10 @@ void record(const char* gametype)
     time_t current_time;
     current_time = time(NULL);
     
-    fprintf(RECORD, "Name: | %s\n", outputname);
+    fprintf(RECORD, "Name:        | %s\n", outputname);
     fprintf(RECORD, "Played Date: | %s", ctime(&current_time));
-    fprintf(RECORD, "Game Type: | %s\n", gametype);
-    fprintf(RECORD, "Score: | %d\n\n\n", final_score = Score());
+    fprintf(RECORD, "Game Type:   | %s\n", gametype);
+    fprintf(RECORD, "Score:       | %d\n\n\n", final_score = Score());
     
     fclose(RECORD);
     
@@ -484,7 +498,7 @@ void record(const char* gametype)
         c = getc(RECORD);
     }
     
-    fclose(RECORD);
+    fclose(RECORD);    
      
 }
    
