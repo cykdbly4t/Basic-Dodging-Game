@@ -71,7 +71,7 @@ int main()
     scanf("%c",&control_type);
     
     
-        if (control_type == 'A')
+        if (control_type == 'A' || control_type == 'a')
         {
             system("cls");
             printf("Loading...\n");
@@ -80,7 +80,7 @@ int main()
             system("cls");
             auto_control();
         }
-        else if (control_type == 'M')
+        else if (control_type == 'M' || control_type == 'm')
         {
             system("cls");  
             printf("Loading...\n");
